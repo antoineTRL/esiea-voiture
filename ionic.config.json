@@ -1,0 +1,7 @@
+{
+  "name": "esiea-voiture",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
