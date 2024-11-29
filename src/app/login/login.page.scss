@@ -1,10 +1,4 @@
-.login-container {
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 30px;
-}
+
 
 .login-container div {
   margin-bottom: 1em;
@@ -51,5 +45,22 @@
   height: 1px; /* Épaisseur du trait */
   background-color: #ccc; /* Couleur du trait */
   border: none;
+}
+
+.block-container {
+  background: #12191e;
+  border-radius: 15px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.logo-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 30px;
 }
 

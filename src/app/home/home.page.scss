@@ -25,3 +25,27 @@
 #container a {
   text-decoration: none;
 }
+
+.center-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 80px;
+}
+
+.card {
+  width: 500px;
+  HEIGHT: 600px;
+}
+
+ion-button {
+  --background: #3880ff;
+  --color: white;
+  height: 44px;
+  width: 44px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

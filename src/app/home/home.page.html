@@ -3,37 +3,45 @@
     <ion-title>Home</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar animated="true" placeholder="Rechercher votre voiture"></ion-searchbar>
+    <ion-searchbar animated="true" placeholder="Rechercher votre voiture">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <div>
-  <ion-list>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="assets/cars/Nissan GT-R.jpeg"/>
-      </ion-thumbnail>
-      <ion-label>Nissan GT-R</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="assets/cars/1711553347188.jpeg"/>
-      </ion-thumbnail>
-      <ion-label>Honda Civic Type R</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="assets/cars/mitsubishi-lancer-evolution-v-kit-a-monter-tt-02-tamiya-58713-p-image-62552-grande.jpg"/>
-      </ion-thumbnail>
-      <ion-label>Mistubishi Lancer Evolution</ion-label>
-    </ion-item><ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/cars/s-l1200.jpg"/>
-    </ion-thumbnail>
-    <ion-label>Toyota Trueno AE86</ion-label>
-  </ion-item>
-  </ion-list>
+  <div class="center-block">
+    <ion-card class="card">
+      <img alt="Nissan GT-R" src="assets/cars/Nissan GT-R.jpeg" />
+      <ion-card-header>
+        <ion-card-title>Nissan GT-R</ion-card-title>
+        <ion-card-subtitle>Cliquer pour voir les details</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card class="card">
+      <img alt="Honda Civic Type R" src="assets/cars/1711553347188.jpeg" />
+      <ion-card-header>
+        <ion-card-title>Honda Civic Type R</ion-card-title>
+        <ion-card-subtitle>Cliquer pour voir les details</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card class="card">
+      <img alt="Mistubishi Lancer Evolution" src="assets/cars/s-l1200.jpg" />
+      <ion-card-header>
+        <ion-card-title>Mistubishi Lancer Evolution</ion-card-title>
+        <ion-card-subtitle>Cliquer pour voir les details</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon id="icon-add" name="add-circle" color="primary"></ion-icon>
+<!--      +-->
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

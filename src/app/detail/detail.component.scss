@@ -1,0 +1,30 @@
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px; /* Espace entre les images */
+  padding: 16px;
+}
+
+.image-container ion-img {
+  width: 48%; /* Chaque image prend 48% de la largeur */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet visuel agréable */
+}
+
+.description-container {
+  padding: 16px;
+  background-color: #1E1E1E;
+  border-radius: 8px;
+  margin: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.description-container h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.description-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+}

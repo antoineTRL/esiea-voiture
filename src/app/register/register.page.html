@@ -5,40 +5,66 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+<div class="center-block">
+  <div class="block-container">
   <form>
+    <br>
     <!-- Nom d’utilisateur -->
     <ion-item>
       <ion-label position="floating">Nom d’utilisateur</ion-label>
       <ion-input type="text" name="username" required></ion-input>
     </ion-item>
+    @if (registerForm.get('fullName')?.dirty) {
+    @if (registerForm.get('fullName')?.errors?.['required']) {
+    <span class="span-error">This field is required</span>
+    }
+
+    @if (registerForm.get('fullName')?.errors?.['minlength']) {
+    <span class="span-error">Minimum characters should be 2.</span>
+    }
+    }
+
+    <br>
 
     <!-- Email -->
     <ion-item>
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" name="email" required></ion-input>
     </ion-item>
-
+    <br>
     <!-- Numéro de téléphone -->
     <ion-item>
       <ion-label position="floating">Numéro de téléphone</ion-label>
       <ion-input type="tel" name="phoneNumber" required></ion-input>
     </ion-item>
-
+    <br>
     <!-- Mot de passe -->
     <ion-item>
       <ion-label position="floating">Mot de passe</ion-label>
       <ion-input type="password" name="password" required></ion-input>
     </ion-item>
+    @if (registerForm.get('password')?.dirty) {
+    @if (registerForm.get('password')?.errors?.['required']) {
+    <span class="span-error">This field is required</span>
+    }
 
+    @if (registerForm.get('password')?.errors?.['minlength']) {
+    <span class="span-error">Your password should be strong with at least 08 characters.</span>
+    }
+    }
+    <br>
     <!-- Confirmer le mot de passe -->
     <ion-item>
       <ion-label position="floating">Confirmer le mot de passe</ion-label>
       <ion-input type="password" name="confirmPassword" required></ion-input>
     </ion-item>
-
+    <br>
     <div class="center-content">
     <!-- Bouton d'inscription -->
     <ion-button shape="round" type="submit" class="ion-margin-top" routerLink="/login">S'inscrire</ion-button>
     </div>
   </form>
+
+  </div>
+</div>
 </ion-content>

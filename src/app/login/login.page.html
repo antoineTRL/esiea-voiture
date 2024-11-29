@@ -5,25 +5,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
+  <div class="logo-container">
     <ion-img src="assets/car-logo-png-2309.png"/>
-    <ion-title>Location Voiture</ion-title>
-    <p>Se connecter</p>
   </div>
 
-  <form>
+  <div class="center-content">
+    <div class="block-container">
+    <ion-title>Location Voiture</ion-title>
+    <p>Se connecter</p>
+
+
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email"
+                 formControlName="email"
+                 required
+                 [errorText]="getErrorMessage('email')">
+
+      </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Mot de passe</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password"
+                 formControlName="password"
+                 required
+                 [errorText]="getErrorMessage('password')">
+
+      </ion-input>
     </ion-item>
 
     <div class="center-content">
-      <ion-button shape="round" fill="solid" type="submit">Se connecter</ion-button>
+      <ion-button shape="round" fill="solid" type="submit">
+        Se connecter
+      </ion-button>
     </div>
 
     <div class="center-content">
@@ -35,8 +52,13 @@
     </div>
 
     <div class="center-content">
-      <ion-button shape="round" fill="outline" routerLink="/register">Créer un compte</ion-button>
+      <ion-button shape="round" fill="outline"
+                  (click)="register()">
+        Créer un compte
+      </ion-button>
     </div>
   </form>
+  </div>
+  </div>
 </ion-content>
 
