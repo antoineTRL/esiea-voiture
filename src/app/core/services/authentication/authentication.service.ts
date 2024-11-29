@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, Us
 import { getDatabase, ref, set } from 'firebase/database';
 
 export interface IUser {
+  username: string;
+  phone: string
   fullName: string,
   email: string,
   password: string
@@ -23,10 +25,10 @@ export class AuthenticationService {
 
       createUserWithEmailAndPassword(getAuth(), user.email, user.password)
         .then((userCreated: UserCredential) => {
-
           set(ref(database, 'users/' + userCreated.user.uid), {
             email: user.email,
-            fullName: user.fullName,
+            username: user.username,
+            phone: user.phone,
           }).then(() => resolve(true))
             .catch((error) => reject(false));
 

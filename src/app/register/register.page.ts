@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import {addIcons} from "ionicons";
 import {eyeOffOutline, eyeOutline} from "ionicons/icons";
 import { LoginPage } from '../login/login.page';
+import {createUserWithEmailAndPassword} from "firebase/auth";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,9 @@ import { LoginPage } from '../login/login.page';
   styleUrls: ['./register.page.scss'],
   imports: [
     FormsModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   standalone: true
 })
@@ -24,11 +27,12 @@ export class RegisterPage implements OnInit {
   public registerForm = new FormGroup({
     fullName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
 
   });
-  public passwordType = 'password';
-  public passwordIcon = 'eye-outline';
+  private FirebaseError: unknown;
 
 
 
@@ -40,26 +44,47 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  public onToggleShowPassword(): void {
-    if (this.passwordType === 'password') {
-      this.passwordType = 'text';
-      this.passwordIcon = 'eye-off-outline';
-    } else {
-      this.passwordType = 'password';
-      this.passwordIcon = 'eye-outline';
+  private validateSignUpForm(): boolean {
+    const fullName        = this.registerForm.get('fullName')?.value;
+    const email           = this.registerForm.get('email')?.value
+    const phone           = this.registerForm.get('phone')?.value
+    const password        = this.registerForm.get('password')?.value;
+    const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+
+    if (password !== confirmPassword) {
+      console.log('Passwords do not match')
+      console.log(password)
+      console.log(confirmPassword)
+
+      return false;
     }
+
+    if (this.registerForm.invalid) {
+      console.log('Please fill all fields correctly')
+      console.log(fullName)
+      console.log(email)
+      console.log(phone)
+      console.log(password)
+      console.log(confirmPassword)
+      return false;
+    }
+
+    return true;
   }
 
-  public onSignUp(): void {
-    this.authenticationService.signUpWithEmailAndPassword(this.registerForm.value as unknown as IUser)
-      .then((userCreated: boolean | unknown) => {
-        console.log(userCreated);
-        if(userCreated) {
-          this.router.navigate(['contact']);
-        }
-      }).catch((error) => {
-      console.log(error);
-    })
-  }
+  async onSignUp(): Promise<void> {
 
+    this.validateSignUpForm();
+
+    try {
+      const isRegistered = await this.authenticationService.signUpWithEmailAndPassword(this.registerForm.value as unknown as IUser);
+      if (isRegistered) {
+        console.log('User registered successfully')
+        this.router.navigate(['/login']);
+      }
+    } catch (error: unknown) {
+        return;
+      }
+
+  }
 }
